@@ -1,7 +1,7 @@
 defmodule ExMoip.Customer do
 
   alias ExMoip.Customers.{Phone, TaxDocument, Address}
-  alias ExMoip.{Customer, FundingInstrument}
+  alias ExMoip.FundingInstrument
 
   @enforce_keys [:ownId, :fullname, :email, :birthDate, 
                 :taxDocument, :phone]
@@ -20,11 +20,4 @@ defmodule ExMoip.Customer do
     shippingAddress: Address.t, 
     fundingInstrument: FundingInstrument.t
   }
-      
-
-  def create(%Customer{} = customer) do
-    customer = Poison.encode!(customer)
-    #TODO: check why this isn't working
-    #HTTPoison.request!(:post, "https://sandbox.moip.com.br/v2/customers", customer, [{"Content-Type", "application/json"}, {"Authorization", ""}])
-  end
 end

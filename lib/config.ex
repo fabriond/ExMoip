@@ -3,7 +3,7 @@ defmodule Config do
     @production_url "https://api.moip.com.br/v2"
 
 
-    def assinaturas_url do
+    def get_url do
       case Application.get_env(:ex_moip, :env) do
         :sandbox -> @sandbox_url
         _ -> @production_url
